@@ -1,6 +1,6 @@
 # Karachi Eats Healthy
 
-Landing website for a healthy meal-plan subscription service in Karachi (working brand name: **dabba**).
+Landing website for a healthy meal-plan subscription service in Karachi (brand name: **KALO**).
 
 Open `index.html` in a browser. It is one self-contained file with no build step.
 
