@@ -1,0 +1,740 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dabba — Healthy Meal Plans in Karachi</title>
+<meta name="description" content="Chef-made, macro-counted desi meal plans delivered fresh across Karachi every morning.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#0f5c3f; --green-2:#13774f; --mint:#e8f5ee; --saffron:#f4a51c; --chili:#e2552d;
+  --ink:#14211b; --muted:#5d6b64; --line:#e3e9e5; --bg:#ffffff; --soft:#f7faf8; --card:#ffffff;
+  --radius:18px; --shadow:0 10px 30px rgba(15,92,63,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Poppins,system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:14px 26px;font:600 15px Poppins,sans-serif;cursor:pointer;transition:.2s}
+.btn-primary{background:var(--green);color:#fff}
+.btn-primary:hover{background:var(--green-2);transform:translateY(-1px)}
+.btn-ghost{background:#fff;color:var(--green);border:2px solid var(--green)}
+.btn-ghost:hover{background:var(--mint)}
+.eyebrow{display:inline-block;background:var(--mint);color:var(--green);font-weight:600;font-size:13px;padding:6px 14px;border-radius:999px;margin-bottom:14px}
+h1{font-size:clamp(34px,5.4vw,60px);line-height:1.08;font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(28px,3.6vw,42px);line-height:1.15;font-weight:800;letter-spacing:-.01em}
+h3{font-size:19px;font-weight:700}
+.lead{font-size:18px;color:var(--muted)}
+section{padding:90px 0}
+.center{text-align:center}
+.section-head{max-width:680px;margin:0 auto 48px;text-align:center}
+.section-head p{color:var(--muted);margin-top:12px}
+
+/* Top bar & nav */
+.topbar{background:var(--green);color:#fff;font-size:13px;text-align:center;padding:8px 12px}
+.topbar b{color:var(--saffron)}
+nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:70px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:24px;color:var(--green);letter-spacing:-.02em}
+.logo-mark{width:38px;height:38px;border-radius:12px;background:var(--green);display:grid;place-items:center;color:#fff;font-size:20px;position:relative}
+.logo-mark::after{content:"";position:absolute;right:-3px;top:-3px;width:12px;height:12px;border-radius:50%;background:var(--saffron);border:2px solid #fff}
+.nav-links{display:flex;gap:28px;font-weight:500;font-size:15px}
+.nav-links a:hover{color:var(--green)}
+.nav-cta{display:flex;gap:10px;align-items:center}
+.nav-cta .btn{padding:10px 20px;font-size:14px}
+.burger{display:none;background:none;border:0;font-size:26px;cursor:pointer;color:var(--green)}
+
+/* Hero */
+.hero{padding:70px 0 80px;background:radial-gradient(1200px 500px at 85% 10%,#fff4dc 0,transparent 60%),linear-gradient(180deg,var(--soft),#fff)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:50px;align-items:center}
+.hero h1 span{color:var(--green)}
+.hero h1 em{font-style:normal;color:var(--saffron)}
+.hero .lead{margin:20px 0 30px;max-width:520px}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.trust{display:flex;gap:28px;margin-top:36px;flex-wrap:wrap}
+.trust div{font-size:13px;color:var(--muted)}
+.trust b{display:block;font-size:24px;color:var(--ink)}
+.hero-visual{position:relative;aspect-ratio:1/1;max-width:520px;justify-self:center;width:100%}
+.plate{position:absolute;inset:8%;border-radius:50%;background:radial-gradient(circle at 50% 45%,#fff 0 58%,#f1f1ec 59% 64%,#fff 65%);box-shadow:0 30px 60px rgba(0,0,0,.12);display:grid;place-items:center}
+.plate-inner{width:72%;aspect-ratio:1/1;border-radius:50%;position:relative;overflow:hidden;background:conic-gradient(#d9a441 0 30%,#7fb547 0 52%,#b8432a 0 78%,#f3e3c3 0 100%)}
+.plate-inner span{position:absolute;font-size:clamp(38px,6vw,64px)}
+.plate-inner span:nth-child(1){top:12%;left:18%}
+.plate-inner span:nth-child(2){top:14%;right:16%}
+.plate-inner span:nth-child(3){bottom:14%;left:22%}
+.plate-inner span:nth-child(4){bottom:16%;right:20%}
+.plate-inner span:nth-child(5){top:38%;left:38%}
+.float{position:absolute;background:#fff;border-radius:14px;box-shadow:var(--shadow);padding:12px 16px;font-size:13px;display:flex;align-items:center;gap:10px;animation:bob 4s ease-in-out infinite}
+.float b{display:block;font-size:15px}
+.float .ic{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-size:18px}
+.f1{top:6%;left:-2%}.f1 .ic{background:#fff1d6}
+.f2{bottom:12%;left:-6%;animation-delay:1s}.f2 .ic{background:var(--mint)}
+.f3{top:42%;right:-4%;animation-delay:2s}.f3 .ic{background:#fde4dc}
+@keyframes bob{50%{transform:translateY(-8px)}}
+
+/* Logos strip */
+.strip{padding:26px 0;border-block:1px solid var(--line);background:#fff}
+.strip .wrap{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;color:var(--muted);font-weight:600;font-size:14px}
+.strip span{display:flex;gap:8px;align-items:center}
+
+/* How it works */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.step{background:var(--soft);border-radius:var(--radius);padding:28px 24px;position:relative}
+.step .num{width:44px;height:44px;border-radius:12px;background:var(--green);color:#fff;font-weight:700;display:grid;place-items:center;margin-bottom:18px}
+.step p{color:var(--muted);font-size:14.5px;margin-top:8px}
+
+/* Plans */
+#plans{background:var(--soft)}
+.plans{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.plan{background:#fff;border:2px solid transparent;border-radius:var(--radius);padding:24px 20px;cursor:pointer;transition:.2s;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+.plan:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.plan.active{border-color:var(--green);box-shadow:var(--shadow)}
+.plan .emoji{font-size:34px;width:60px;height:60px;border-radius:16px;display:grid;place-items:center;margin-bottom:14px}
+.plan p{color:var(--muted);font-size:13.5px;margin:6px 0 12px}
+.plan .kcal{font-size:12px;font-weight:600;color:var(--green);background:var(--mint);display:inline-block;padding:4px 10px;border-radius:999px}
+
+/* Builder */
+.builder{margin-top:40px;display:grid;grid-template-columns:1.4fr 1fr;gap:24px}
+.panel{background:#fff;border-radius:var(--radius);padding:30px;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+.opt-group{margin-bottom:26px}
+.opt-group:last-child{margin-bottom:0}
+.opt-group label.t{display:block;font-weight:600;margin-bottom:10px}
+.opt-group small{color:var(--muted);font-weight:400}
+.chips{display:flex;gap:10px;flex-wrap:wrap}
+.chip{border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:10px 16px;font:500 14px Poppins,sans-serif;cursor:pointer;transition:.15s}
+.chip:hover{border-color:var(--green)}
+.chip.on{background:var(--green);border-color:var(--green);color:#fff}
+.summary{background:var(--green);color:#fff;border-radius:var(--radius);padding:30px;display:flex;flex-direction:column}
+.summary h3{font-size:22px}
+.summary .row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed rgba(255,255,255,.25);font-size:14.5px}
+.summary .row span:first-child{opacity:.8}
+.summary .price{margin:22px 0 6px;font-size:40px;font-weight:800}
+.summary .price small{font-size:15px;font-weight:500;opacity:.8}
+.summary .per{font-size:13px;opacity:.85}
+.summary .save{display:inline-block;background:var(--saffron);color:var(--ink);font-weight:700;font-size:12px;padding:4px 10px;border-radius:999px;margin-top:8px}
+.summary .btn{margin-top:auto;background:#fff;color:var(--green);width:100%}
+.summary .btn:hover{background:var(--mint)}
+.summary .spacer{height:22px}
+
+/* Menu */
+.tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+.tab{border:0;background:var(--soft);padding:10px 18px;border-radius:999px;font:600 14px Poppins,sans-serif;cursor:pointer;color:var(--muted)}
+.tab.on{background:var(--green);color:#fff}
+.filters{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
+.filter{border:1.5px solid var(--line);background:#fff;padding:7px 14px;border-radius:999px;font:500 13px Poppins,sans-serif;cursor:pointer}
+.filter.on{border-color:var(--saffron);background:#fff6e3}
+.dishes{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.dish{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:.2s;display:flex;flex-direction:column}
+.dish:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.dish .img{height:170px;display:grid;place-items:center;font-size:70px;position:relative}
+.dish .tag{position:absolute;top:12px;left:12px;background:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;text-transform:uppercase;letter-spacing:.04em}
+.dish .spice{position:absolute;top:12px;right:12px;font-size:13px;background:#fff;padding:3px 8px;border-radius:999px}
+.dish .body{padding:18px;display:flex;flex-direction:column;flex:1}
+.dish h4{font-size:16px;line-height:1.3}
+.dish .urdu{font-size:12.5px;color:var(--muted);margin-top:2px}
+.dish p.d{font-size:13px;color:var(--muted);margin:8px 0 14px;flex:1}
+.macros{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;text-align:center}
+.macros div{background:var(--soft);border-radius:10px;padding:6px 2px;font-size:11px;color:var(--muted)}
+.macros b{display:block;font-size:14px;color:var(--ink)}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:40px}
+
+/* Why */
+#why{background:linear-gradient(180deg,#fff,var(--soft))}
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.why .card{background:#fff;border-radius:var(--radius);padding:28px;border:1px solid var(--line)}
+.why .ic{font-size:28px;width:54px;height:54px;border-radius:14px;background:var(--mint);display:grid;place-items:center;margin-bottom:16px}
+.why p{color:var(--muted);font-size:14.5px;margin-top:8px}
+
+/* Areas */
+.areas{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.area-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.area-list span{background:var(--mint);color:var(--green);padding:8px 14px;border-radius:999px;font-size:14px;font-weight:500}
+.area-list span.soon{background:#fff6e3;color:#9a6400}
+.checker{background:var(--soft);border-radius:var(--radius);padding:32px}
+.checker select{width:100%;padding:14px 16px;border-radius:12px;border:1.5px solid var(--line);font:500 15px Poppins,sans-serif;margin:16px 0;background:#fff}
+.checker .result{margin-top:14px;font-weight:600;min-height:24px}
+.times{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.times div{background:#fff;border-radius:12px;padding:14px;font-size:13px;color:var(--muted)}
+.times b{display:block;color:var(--ink);font-size:15px}
+
+/* Testimonials */
+#reviews{background:var(--green);color:#fff}
+#reviews .section-head p{color:rgba(255,255,255,.8)}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.review{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius);padding:28px}
+.review .stars{color:var(--saffron);letter-spacing:2px}
+.review p{margin:14px 0 20px;font-size:15px}
+.review .who{display:flex;gap:12px;align-items:center;font-size:14px}
+.review .av{width:42px;height:42px;border-radius:50%;background:var(--saffron);color:var(--ink);font-weight:700;display:grid;place-items:center}
+.review .who small{display:block;opacity:.75}
+
+/* App */
+.app{background:var(--soft);border-radius:28px;padding:56px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+.app ul{list-style:none;margin:20px 0 28px}
+.app li{padding:6px 0;display:flex;gap:10px}
+.app li::before{content:"✓";color:var(--green);font-weight:800}
+.stores{display:flex;gap:12px;flex-wrap:wrap}
+.store{background:var(--ink);color:#fff;border-radius:12px;padding:10px 18px;display:flex;gap:10px;align-items:center;font-size:12px}
+.store b{display:block;font-size:16px}
+.phone{width:240px;height:480px;border-radius:36px;background:var(--ink);padding:12px;margin:0 auto;box-shadow:0 30px 60px rgba(0,0,0,.2)}
+.screen{background:#fff;height:100%;border-radius:26px;padding:20px 16px;overflow:hidden}
+.screen .hi{font-size:12px;color:var(--muted)}
+.screen .nm{font-weight:700;font-size:16px;margin-bottom:12px}
+.ring{width:120px;height:120px;border-radius:50%;margin:8px auto 14px;background:conic-gradient(var(--green) 0 68%,var(--mint) 0);display:grid;place-items:center}
+.ring div{width:92px;height:92px;border-radius:50%;background:#fff;display:grid;place-items:center;text-align:center;font-size:11px;color:var(--muted)}
+.ring b{display:block;font-size:20px;color:var(--ink)}
+.mini{display:flex;gap:10px;align-items:center;background:var(--soft);border-radius:12px;padding:8px;margin-bottom:8px;font-size:12px}
+.mini span{font-size:24px}
+.mini b{display:block;font-size:12.5px}
+
+/* FAQ */
+.faq{max-width:800px;margin:0 auto}
+.faq details{border-bottom:1px solid var(--line);padding:20px 0}
+.faq summary{font-weight:600;font-size:17px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px}
+.faq summary::after{content:"+";font-size:24px;color:var(--green);line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq details p{color:var(--muted);margin-top:12px}
+
+/* CTA + footer */
+.cta{background:linear-gradient(120deg,var(--green),#0b3f2c);color:#fff;border-radius:28px;padding:60px;text-align:center}
+.cta p{opacity:.85;margin:12px 0 28px}
+.cta .btn{background:var(--saffron);color:var(--ink)}
+footer{background:#0b1a13;color:#b9c6bf;padding:60px 0 30px;margin-top:90px;font-size:14px}
+footer .cols{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:30px}
+footer h5{color:#fff;font-size:15px;margin-bottom:14px}
+footer li{list-style:none;padding:4px 0}
+footer a:hover{color:#fff}
+footer .logo{color:#fff}
+footer .bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:40px;padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px}
+
+/* WhatsApp + modal */
+.wa{position:fixed;right:20px;bottom:20px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;font-size:28px;box-shadow:0 10px 25px rgba(37,211,102,.4)}
+.modal{position:fixed;inset:0;background:rgba(10,20,15,.55);z-index:100;display:none;align-items:center;justify-content:center;padding:16px}
+.modal.open{display:flex}
+.modal-box{background:#fff;border-radius:22px;max-width:460px;width:100%;padding:32px;position:relative;max-height:92vh;overflow:auto}
+.modal-box .x{position:absolute;right:16px;top:12px;background:none;border:0;font-size:26px;cursor:pointer;color:var(--muted)}
+.modal-box h3{font-size:24px}
+.modal-box .sub{color:var(--muted);font-size:14px;margin:6px 0 20px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+.field input,.field select,.field textarea{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;font:400 15px Poppins,sans-serif}
+.field input:focus,.field select:focus{outline:none;border-color:var(--green)}
+.order-mini{background:var(--mint);border-radius:12px;padding:12px 14px;font-size:13px;margin-bottom:16px;color:var(--green)}
+.ok{text-align:center;padding:20px 0}
+.ok div{font-size:56px}
+
+/* Responsive */
+@media (max-width:1050px){
+  .plans{grid-template-columns:repeat(3,1fr)}
+  .dishes{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:860px){
+  .nav-links,.nav-cta .btn-ghost{display:none}
+  .burger{display:block}
+  .nav-links.show{display:flex;flex-direction:column;position:absolute;top:70px;left:0;right:0;background:#fff;padding:20px;border-bottom:1px solid var(--line);gap:16px}
+  .hero .wrap,.builder,.areas,.app{grid-template-columns:1fr}
+  .hero-visual{max-width:400px}
+  .steps,.why,.reviews{grid-template-columns:1fr 1fr}
+  .plans,.dishes{grid-template-columns:1fr 1fr}
+  footer .cols{grid-template-columns:1fr 1fr}
+  .app,.cta{padding:36px 24px}
+  section{padding:64px 0}
+}
+@media (max-width:540px){
+  .wrap{padding:0 16px}
+  .steps,.why,.reviews,.dishes{grid-template-columns:1fr}
+  .plans{grid-template-columns:1fr 1fr}
+  .nav-cta .btn-primary{padding:9px 14px;font-size:13px}
+  .f1{left:0}.f2{left:0}.f3{right:0}
+  .float{padding:8px 10px;font-size:11px}
+  .float b{font-size:13px}
+  .panel,.summary{padding:22px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">🎉 Launch offer for Karachi: <b>20% off</b> your first week — use code <b>KHI20</b></div>
+
+<nav>
+  <div class="wrap">
+    <a href="#" class="logo"><div class="logo-mark">🍱</div>dabba</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#how">How it works</a>
+      <a href="#plans">Plans</a>
+      <a href="#menu">Menu</a>
+      <a href="#areas">Delivery</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#menu" class="btn btn-ghost">View menu</a>
+      <a href="#plans" class="btn btn-primary">Get started</a>
+      <button class="burger" aria-label="Menu" onclick="document.getElementById('navLinks').classList.toggle('show')">☰</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">📍 Now delivering across Karachi</span>
+      <h1>Healthy eating, <span>the Karachi way</span>. <em>No compromise on taste.</em></h1>
+      <p class="lead">Chef-made, macro-counted meal plans with the flavours you grew up with: karahi, tikka, biryani and daal. Delivered fresh to your door every morning.</p>
+      <div class="hero-ctas">
+        <a href="#plans" class="btn btn-primary">Build my plan →</a>
+        <a href="#menu" class="btn btn-ghost">See this week's menu</a>
+      </div>
+      <div class="trust">
+        <div><b>60+</b>rotating desi dishes</div>
+        <div><b>100%</b>halal, home-style</div>
+        <div><b>7 AM</b>daily doorstep delivery</div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="plate"><div class="plate-inner"><span>🍗</span><span>🥗</span><span>🍚</span><span>🫓</span><span>🌶️</span></div></div>
+      <div class="float f1"><div class="ic">🔥</div><div><b>520 kcal</b>Chicken Tikka Bowl</div></div>
+      <div class="float f2"><div class="ic">💪</div><div><b>42g protein</b>per lunch</div></div>
+      <div class="float f3"><div class="ic">🌶️</div><div><b>Your spice</b>Mild · Medium · Karachi hot</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="wrap">
+    <span>✅ Calories & macros on every meal</span>
+    <span>🥩 100% halal sourcing</span>
+    <span>🫒 Cooked in olive / avocado oil — no dalda</span>
+    <span>⏸️ Pause or skip anytime</span>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">How it works</span>
+      <h2>Your healthy routine, sorted in 4 steps</h2>
+      <p>No meal prep, no calorie counting, no grocery runs to Imtiaz. We handle it all.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>Pick your goal</h3><p>Lose weight, build muscle, eat balanced, go low-carb or manage blood sugar.</p></div>
+      <div class="step"><div class="num">2</div><h3>Customise</h3><p>Choose meals per day, days per week, spice level and swap out anything you don't like.</p></div>
+      <div class="step"><div class="num">3</div><h3>We cook fresh</h3><p>Our chefs and nutritionists cook overnight in our Karachi kitchen. Never frozen.</p></div>
+      <div class="step"><div class="num">4</div><h3>Delivered by 7 AM</h3><p>Your whole day's meals arrive in an insulated bag before you leave for work.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANS + BUILDER -->
+<section id="plans">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Meal plans</span>
+      <h2>Choose a plan that fits your goal</h2>
+      <p>Every plan is designed by a certified nutritionist and adjusted to your body and target.</p>
+    </div>
+
+    <div class="plans" id="planList"></div>
+
+    <div class="builder">
+      <div class="panel">
+        <div class="opt-group">
+          <label class="t">Meals per day</label>
+          <div class="chips" data-key="meals">
+            <button class="chip" data-v="2">2 meals</button>
+            <button class="chip on" data-v="3">3 meals</button>
+            <button class="chip" data-v="4">4 meals</button>
+          </div>
+        </div>
+        <div class="opt-group">
+          <label class="t">Add snacks <small>(fruit chaat, protein lassi, roasted chanay…)</small></label>
+          <div class="chips" data-key="snacks">
+            <button class="chip on" data-v="0">None</button>
+            <button class="chip" data-v="1">1 snack</button>
+            <button class="chip" data-v="2">2 snacks</button>
+          </div>
+        </div>
+        <div class="opt-group">
+          <label class="t">Days per week</label>
+          <div class="chips" data-key="days">
+            <button class="chip" data-v="5">5 days <small>(Mon–Fri)</small></button>
+            <button class="chip on" data-v="6">6 days <small>(Mon–Sat)</small></button>
+            <button class="chip" data-v="7">7 days</button>
+          </div>
+        </div>
+        <div class="opt-group">
+          <label class="t">Plan length</label>
+          <div class="chips" data-key="weeks">
+            <button class="chip" data-v="1">1 week</button>
+            <button class="chip on" data-v="2">2 weeks</button>
+            <button class="chip" data-v="4">4 weeks <small>· save 10%</small></button>
+          </div>
+        </div>
+        <div class="opt-group">
+          <label class="t">Spice level</label>
+          <div class="chips" data-key="spice">
+            <button class="chip" data-v="Mild">🌶️ Mild</button>
+            <button class="chip on" data-v="Medium">🌶️🌶️ Medium</button>
+            <button class="chip" data-v="Karachi hot">🌶️🌶️🌶️ Karachi hot</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="summary">
+        <h3 id="sumTitle">Balanced plan</h3>
+        <div class="spacer"></div>
+        <div class="row"><span>Meals</span><span id="sumMeals"></span></div>
+        <div class="row"><span>Snacks</span><span id="sumSnacks"></span></div>
+        <div class="row"><span>Schedule</span><span id="sumDays"></span></div>
+        <div class="row"><span>Spice</span><span id="sumSpice"></span></div>
+        <div class="row"><span>Delivery</span><span>Free</span></div>
+        <div class="price" id="sumPrice"></div>
+        <div class="per" id="sumPer"></div>
+        <div id="sumSave"></div>
+        <div class="spacer"></div>
+        <button class="btn" onclick="openModal()">Subscribe now →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">This week's menu</span>
+      <h2>Desi favourites, made lighter</h2>
+      <p>Our menu rotates every week so you never get bored. Every dish lists calories, protein, carbs and fat.</p>
+    </div>
+    <div class="tabs" id="mealTabs">
+      <button class="tab on" data-v="breakfast">🌅 Breakfast</button>
+      <button class="tab" data-v="lunch">☀️ Lunch</button>
+      <button class="tab" data-v="dinner">🌙 Dinner</button>
+      <button class="tab" data-v="snack">🍎 Snacks</button>
+    </div>
+    <div class="filters" id="filters">
+      <button class="filter on" data-v="all">All</button>
+      <button class="filter" data-v="high-protein">💪 High protein</button>
+      <button class="filter" data-v="low-carb">🥑 Low carb</button>
+      <button class="filter" data-v="veg">🌱 Vegetarian</button>
+      <button class="filter" data-v="seafood">🐟 Seafood</button>
+    </div>
+    <div class="dishes" id="dishGrid"></div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Why dabba</span>
+      <h2>Built for how Karachi eats</h2>
+    </div>
+    <div class="why">
+      <div class="card"><div class="ic">🍛</div><h3>Taste you know</h3><p>Real desi masalas, slow-cooked salan and smoky tikka. Healthy food doesn't have to mean boiled chicken.</p></div>
+      <div class="card"><div class="ic">🧑‍⚕️</div><h3>Nutritionist-designed</h3><p>Every recipe is portioned and macro-balanced by a certified dietitian. Free consultation with every 4-week plan.</p></div>
+      <div class="card"><div class="ic">🫒</div><h3>Clean ingredients</h3><p>No vanaspati or dalda, no MSG. Brown basmati, multigrain atta and fresh produce from local mandis.</p></div>
+      <div class="card"><div class="ic">❄️</div><h3>Fresh, never frozen</h3><p>Cooked overnight, packed in sealed containers and delivered cold-chain. Just heat for 2 minutes.</p></div>
+      <div class="card"><div class="ic">🔄</div><h3>Total flexibility</h3><p>Pause during travel, skip a day, swap dishes or change your plan from the app or WhatsApp.</p></div>
+      <div class="card"><div class="ic">🌙</div><h3>Ramadan ready</h3><p>Dedicated Sehri & Iftar plans with dates, light snacks and hydrating meals, delivered before Iftar.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section id="areas">
+  <div class="wrap areas">
+    <div>
+      <span class="eyebrow">Delivery areas</span>
+      <h2>We deliver across Karachi</h2>
+      <p class="lead" style="margin-top:12px">Free morning delivery to these areas, with more neighbourhoods every month.</p>
+      <div class="area-list" id="areaList"></div>
+    </div>
+    <div class="checker">
+      <h3>Check your area</h3>
+      <select id="areaSel" onchange="checkArea()"><option value="">Select your area…</option></select>
+      <div class="result" id="areaRes"></div>
+      <div class="times">
+        <div><b>6 – 8 AM</b>Morning delivery slot</div>
+        <div><b>5 – 7 PM</b>Evening slot (next-day meals)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" style="background:rgba(255,255,255,.12);color:#fff">Reviews</span>
+      <h2>Karachi loves dabba</h2>
+      <p>Sample reviews — replace with real customer feedback after launch.</p>
+    </div>
+    <div class="reviews">
+      <div class="review"><div class="stars">★★★★★</div><p>"Lost 7 kg in 2 months and never felt like I was dieting. The chicken karahi tastes like home, just lighter."</p><div class="who"><div class="av">S</div><div>Sana<small>DHA Phase 6 · Weight loss plan</small></div></div></div>
+      <div class="review"><div class="stars">★★★★★</div><p>"As a gym-goer, finding 40g protein meals that aren't bland was impossible. The beef bihari boti bowl is my favourite."</p><div class="who"><div class="av">H</div><div>Hamza<small>Gulshan-e-Iqbal · Muscle gain plan</small></div></div></div>
+      <div class="review"><div class="stars">★★★★★</div><p>"My father is diabetic and the low-GI plan has really helped his sugar levels. Delivery is always on time."</p><div class="who"><div class="av">A</div><div>Ayesha<small>PECHS · Diabetic-friendly plan</small></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- APP -->
+<section>
+  <div class="wrap">
+    <div class="app">
+      <div>
+        <span class="eyebrow">The dabba app</span>
+        <h2>Manage everything from your phone</h2>
+        <ul>
+          <li>Swap meals and see macros instantly</li>
+          <li>Pause, skip or change delivery address</li>
+          <li>Track calories, protein and weight progress</li>
+          <li>Pay with JazzCash, Easypaisa, card or cash on delivery</li>
+        </ul>
+        <div class="stores">
+          <a href="#" class="store"><span style="font-size:24px"></span><div>Download on the<b>App Store</b></div></a>
+          <a href="#" class="store"><span style="font-size:22px">▶</span><div>Get it on<b>Google Play</b></div></a>
+        </div>
+      </div>
+      <div class="phone"><div class="screen">
+        <div class="hi">Assalam o Alaikum 👋</div>
+        <div class="nm">Today's meals</div>
+        <div class="ring"><div><b>1,240</b>of 1,800 kcal</div></div>
+        <div class="mini"><span>🍳</span><div><b>Masala Omelette Wrap</b>380 kcal · 28g P</div></div>
+        <div class="mini"><span>🍗</span><div><b>Chicken Tikka Bowl</b>520 kcal · 42g P</div></div>
+        <div class="mini"><span>🍲</span><div><b>Lean Beef Nihari</b>560 kcal · 40g P</div></div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="padding-top:20px">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">FAQ</span><h2>Questions? We've got answers</h2></div>
+    <div class="faq">
+      <details open><summary>When and how are meals delivered?</summary><p>Your full day's meals are delivered between 6 and 8 AM in an insulated bag with ice packs. You can also choose the evening slot (5–7 PM) to receive the next day's meals.</p></details>
+      <details><summary>Is all the food halal?</summary><p>Yes. All our meat and chicken is 100% halal and sourced from certified local suppliers.</p></details>
+      <details><summary>Can I pause or cancel my plan?</summary><p>Yes. Pause anytime from the app or WhatsApp with 24 hours' notice. Paused days are added to the end of your plan. There are no long-term contracts.</p></details>
+      <details><summary>Can I remove ingredients I'm allergic to?</summary><p>Yes. Tell us your allergies (nuts, dairy, gluten, shellfish and more) at signup and we'll swap dishes automatically.</p></details>
+      <details><summary>How do I pay?</summary><p>We accept debit/credit cards, JazzCash, Easypaisa, bank transfer and cash on delivery for the first order.</p></details>
+      <details><summary>How do I heat the meals?</summary><p>Our containers are microwave-safe. Heat for 2–3 minutes. Salads and breakfast items like overnight oats are served cold.</p></details>
+      <details><summary>What happens to the containers?</summary><p>Leave them outside the next morning and our rider will collect them for recycling. Return 20 containers and get a free snack.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding-bottom:0">
+  <div class="wrap">
+    <div class="cta">
+      <h2>Ready to eat better, starting Monday?</h2>
+      <p>Join thousands of Karachiites who've stopped worrying about what to eat. 20% off your first week with code KHI20.</p>
+      <a href="#plans" class="btn">Start my plan →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a href="#" class="logo"><div class="logo-mark">🍱</div>dabba</a>
+        <p style="margin-top:14px;max-width:300px">Healthy, chef-made desi meal plans delivered fresh across Karachi.</p>
+        <p style="margin-top:14px">📞 0300-0000000<br>✉️ hello@dabba.pk<br>📍 Shahrah-e-Faisal, Karachi</p>
+      </div>
+      <div><h5>Plans</h5><ul><li><a href="#plans">Balanced</a></li><li><a href="#plans">Weight loss</a></li><li><a href="#plans">Muscle gain</a></li><li><a href="#plans">Low carb</a></li><li><a href="#plans">Diabetic-friendly</a></li></ul></div>
+      <div><h5>Company</h5><ul><li><a href="#">About us</a></li><li><a href="#">Corporate meals</a></li><li><a href="#">Careers</a></li><li><a href="#">Gift a plan</a></li></ul></div>
+      <div><h5>Help</h5><ul><li><a href="#faq">FAQ</a></li><li><a href="#areas">Delivery areas</a></li><li><a href="#">Terms</a></li><li><a href="#">Privacy</a></li></ul></div>
+    </div>
+    <div class="bottom"><span>© 2026 dabba. All rights reserved.</span><span>Instagram · Facebook · TikTok</span></div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/923000000000" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+<!-- MODAL -->
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box" id="modalBox">
+    <button class="x" onclick="closeModal()">×</button>
+    <div id="formView">
+      <h3>Almost there!</h3>
+      <p class="sub">Tell us where to deliver. Our team will confirm your order on WhatsApp.</p>
+      <div class="order-mini" id="orderMini"></div>
+      <form onsubmit="submitOrder(event)">
+        <div class="field"><label>Full name</label><input required placeholder="e.g. Ali Raza"></div>
+        <div class="field"><label>WhatsApp number</label><input required type="tel" placeholder="03XX-XXXXXXX"></div>
+        <div class="field"><label>Area</label><select required id="modalArea"><option value="">Select area</option></select></div>
+        <div class="field"><label>Full address</label><input required placeholder="House / flat, street, block"></div>
+        <div class="field"><label>Allergies or dislikes (optional)</label><input placeholder="e.g. no mushrooms, nut allergy"></div>
+        <div class="field"><label>Start date</label><input required type="date" id="startDate"></div>
+        <button class="btn btn-primary" style="width:100%">Confirm order</button>
+      </form>
+    </div>
+    <div class="ok" id="okView" style="display:none">
+      <div>🎉</div>
+      <h3>Shukriya! Order received</h3>
+      <p class="sub">We'll message you on WhatsApp within 30 minutes to confirm your plan and payment.</p>
+      <button class="btn btn-primary" onclick="closeModal()">Done</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ---------- DATA ---------- */
+const PLANS = [
+  {id:"balanced", name:"Balanced", emoji:"🥗", bg:"#e8f5ee", kcal:"1,600–2,000 kcal", desc:"Everyday healthy desi meals, perfectly portioned.", mult:1},
+  {id:"loss", name:"Weight Loss", emoji:"⚖️", bg:"#fff1d6", kcal:"1,200–1,500 kcal", desc:"Calorie-deficit, high-fibre meals that keep you full.", mult:1},
+  {id:"muscle", name:"Muscle Gain", emoji:"💪", bg:"#fde4dc", kcal:"2,200–2,800 kcal", desc:"Extra protein portions for gym and training days.", mult:1.2},
+  {id:"lowcarb", name:"Low Carb", emoji:"🥑", bg:"#eaf0ff", kcal:"1,400–1,800 kcal", desc:"No rice or roti. Cauli-rice, salads and more protein.", mult:1.1},
+  {id:"diabetic", name:"Diabetic-Friendly", emoji:"🩺", bg:"#f1e8ff", kcal:"1,400–1,800 kcal", desc:"Low-GI carbs, no added sugar, steady blood sugar.", mult:1.1},
+];
+
+// Price in PKR per meal / snack (base, before plan multiplier)
+const PRICE = {meal:{2:950, 3:900, 4:850}, snack:350};
+
+const DISHES = [
+  // Breakfast
+  {m:"breakfast",n:"Masala Omelette Wrap",u:"مصالحہ آملیٹ رول",d:"3-egg desi omelette with onion, tomato, green chilli in a whole-wheat tortilla, mint raita on side.",e:"🌯",bg:"#fff4dc",k:380,p:28,c:30,f:16,s:2,t:["high-protein","veg"]},
+  {m:"breakfast",n:"Air-Fried Aloo Paratha",u:"آلو پراٹھا",d:"Multigrain atta paratha with spiced potato filling, cooked without ghee. Served with low-fat dahi.",e:"🫓",bg:"#fbe9d0",k:420,p:14,c:58,f:13,s:1,t:["veg"]},
+  {m:"breakfast",n:"Anda Shami Platter",u:"انڈا شامی",d:"Two boiled eggs, grilled chicken shami kabab, cucumber-tomato salad and a multigrain toast.",e:"🍳",bg:"#fff1d6",k:410,p:34,c:22,f:19,s:1,t:["high-protein"]},
+  {m:"breakfast",n:"Khajoor & Chia Overnight Oats",u:"کھجور اوٹس",d:"Rolled oats soaked in milk with dates, chia, almonds and a drizzle of honey. Served cold.",e:"🥣",bg:"#f3ead9",k:360,p:15,c:52,f:10,s:0,t:["veg"]},
+  {m:"breakfast",n:"Chana Chaat Protein Bowl",u:"چنا چاٹ",d:"Boiled chickpeas, egg, onion, tomato, imli chutney and chaat masala. A Karachi street classic, made clean.",e:"🥗",bg:"#e9f4e2",k:340,p:18,c:44,f:9,s:2,t:["veg"]},
+  {m:"breakfast",n:"Keema Egg Muffins",u:"قیمہ انڈا مفن",d:"Baked egg muffins with lean chicken keema, capsicum and coriander. No bread, high protein.",e:"🧁",bg:"#fde8de",k:310,p:30,c:6,f:18,s:2,t:["high-protein","low-carb"]},
+
+  // Lunch
+  {m:"lunch",n:"Chicken Tikka Bowl",u:"چکن تکہ باؤل",d:"Charcoal-grilled tikka on brown basmati, kachumber salad and green chutney.",e:"🍗",bg:"#fde4dc",k:520,p:42,c:52,f:14,s:2,t:["high-protein"]},
+  {m:"lunch",n:"Lean Chicken Biryani",u:"چکن بریانی",d:"Karachi-style biryani with brown basmati, skinless chicken, aloo and fried onions, minus the excess oil. Raita on side.",e:"🍛",bg:"#fbe3c4",k:560,p:38,c:64,f:15,s:3,t:["high-protein"]},
+  {m:"lunch",n:"Low-Oil Chicken Karahi",u:"چکن کڑاہی",d:"Tomato-ginger karahi cooked in olive oil, with one multigrain roti and salad.",e:"🥘",bg:"#f9dccf",k:490,p:40,c:34,f:20,s:3,t:["high-protein"]},
+  {m:"lunch",n:"Daal Chawal & Kachumber",u:"دال چاول",d:"Yellow moong-masoor daal with jeera tadka, brown rice, salad and achaar.",e:"🍲",bg:"#fff1c9",k:450,p:18,c:70,f:9,s:1,t:["veg"]},
+  {m:"lunch",n:"Masala Fried Fish (Air-Fried)",u:"مچھلی فرائی",d:"Surmai fillet in Karachi-style lal masala, air-fried, with lemon cauli-rice and salad.",e:"🐟",bg:"#e3eef7",k:430,p:38,c:14,f:22,s:3,t:["high-protein","low-carb","seafood"]},
+  {m:"lunch",n:"Chapli Kabab Burger",u:"چپلی کباب برگر",d:"Lean beef chapli kabab in a whole-wheat bun with onion, tomato and yogurt-mint sauce.",e:"🍔",bg:"#f6e2d3",k:540,p:36,c:44,f:22,s:2,t:["high-protein"]},
+  {m:"lunch",n:"Palak Paneer & Roti",u:"پالک پنیر",d:"Creamy spinach with low-fat paneer cubes, one multigrain roti.",e:"🥬",bg:"#e3f2df",k:470,p:24,c:36,f:24,s:1,t:["veg"]},
+
+  // Dinner
+  {m:"dinner",n:"Lean Beef Nihari",u:"بیف نہاری",d:"Slow-cooked lean beef shank nihari with ginger, green chilli and lemon. Skimmed of ghee, with one roti.",e:"🍲",bg:"#f4d9c8",k:560,p:40,c:32,f:28,s:3,t:["high-protein"]},
+  {m:"dinner",n:"Bihari Boti Bowl",u:"بہاری بوٹی",d:"Tender beef bihari boti with smoky charcoal flavour, cauliflower rice and grilled veggies.",e:"🥩",bg:"#f7ddd2",k:510,p:44,c:16,f:28,s:3,t:["high-protein","low-carb"]},
+  {m:"dinner",n:"Prawn Karahi",u:"جھینگا کڑاہی",d:"Juicy prawns in a tangy tomato-garlic karahi with sautéed bhindi on the side.",e:"🦐",bg:"#fde3dc",k:390,p:34,c:18,f:18,s:3,t:["high-protein","low-carb","seafood"]},
+  {m:"dinner",n:"Chicken Haleem Protein Bowl",u:"حلیم",d:"Slow-cooked lentil and wheat haleem with shredded chicken, fried onion, ginger and lemon.",e:"🥣",bg:"#efdcc4",k:480,p:38,c:46,f:14,s:2,t:["high-protein"]},
+  {m:"dinner",n:"Seekh Kabab & Hummus Plate",u:"سیخ کباب",d:"Grilled chicken seekh kababs, hummus, kachumber and grilled capsicum. No carbs.",e:"🍢",bg:"#f9e4d4",k:420,p:40,c:12,f:22,s:2,t:["high-protein","low-carb"]},
+  {m:"dinner",n:"Grilled Pomfret Masala",u:"پاپلیٹ مچھلی",d:"Whole-cut pomfret with green masala, grilled, with sautéed veggies and lemon.",e:"🐠",bg:"#e0edf5",k:380,p:36,c:10,f:20,s:2,t:["high-protein","low-carb","seafood"]},
+  {m:"dinner",n:"Lobia & Mixed Sabzi",u:"لوبیا سبزی",d:"Black-eyed bean curry with seasonal mixed sabzi and brown rice.",e:"🫘",bg:"#eee6d6",k:430,p:19,c:62,f:10,s:1,t:["veg"]},
+
+  // Snacks
+  {m:"snack",n:"Fruit Chaat",u:"فروٹ چاٹ",d:"Seasonal fruits with chaat masala and a squeeze of lemon. No added sugar.",e:"🍉",bg:"#fde4e4",k:140,p:2,c:32,f:1,s:1,t:["veg"]},
+  {m:"snack",n:"Protein Mango Lassi",u:"آم لسی",d:"Low-fat yogurt, Sindhri mango (seasonal) and whey protein. Thick and creamy.",e:"🥭",bg:"#fff1c9",k:220,p:22,c:24,f:4,s:0,t:["high-protein","veg"]},
+  {m:"snack",n:"Roasted Chanay & Nuts",u:"بھنے چنے",d:"Roasted chickpeas, almonds and peanuts with a pinch of chaat masala.",e:"🥜",bg:"#f3e6d0",k:190,p:9,c:16,f:10,s:1,t:["veg","low-carb"]},
+  {m:"snack",n:"Baked Dahi Bhallay",u:"دہی بھلے",d:"Baked lentil bhallay in low-fat dahi with imli and mint chutney.",e:"🥛",bg:"#f2f0ea",k:210,p:10,c:28,f:6,s:1,t:["veg"]},
+  {m:"snack",n:"Chicken Tikka Bites",u:"تکہ بائٹس",d:"Bite-size grilled tikka with mint dip. The ultimate high-protein snack.",e:"🍡",bg:"#fde4dc",k:180,p:26,c:3,f:7,s:2,t:["high-protein","low-carb"]},
+  {m:"snack",n:"Sugar-Free Kheer",u:"کھیر",d:"Brown rice kheer with stevia, elaichi and pistachio. For your meetha craving.",e:"🍮",bg:"#fbf3e2",k:170,p:7,c:26,f:4,s:0,t:["veg"]},
+];
+
+const AREAS = ["DHA (All Phases)","Clifton","Bath Island","PECHS","Bahadurabad","Tariq Road","KDA Scheme 1","Gulshan-e-Iqbal","Gulistan-e-Jauhar","North Nazimabad","Federal B Area","Shahrah-e-Faisal","Karsaz","Cantt / Saddar","Defence View"];
+const SOON = ["Bahria Town","Scheme 33","Malir Cantt","Gulshan-e-Maymar","Korangi"];
+
+/* ---------- STATE ---------- */
+const state = {plan:"balanced", meals:3, snacks:0, days:6, weeks:2, spice:"Medium", menu:"breakfast", filter:"all"};
+const fmt = n => "Rs " + Math.round(n).toLocaleString("en-PK");
+
+/* ---------- PLANS ---------- */
+function renderPlans(){
+  document.getElementById("planList").innerHTML = PLANS.map(p=>`
+    <div class="plan ${p.id===state.plan?'active':''}" onclick="pickPlan('${p.id}')">
+      <div class="emoji" style="background:${p.bg}">${p.emoji}</div>
+      <h3>${p.name}</h3><p>${p.desc}</p><span class="kcal">${p.kcal}</span>
+    </div>`).join("");
+}
+function pickPlan(id){ state.plan=id; renderPlans(); renderSummary(); }
+
+document.querySelectorAll(".chips").forEach(g=>{
+  g.addEventListener("click",e=>{
+    const b=e.target.closest(".chip"); if(!b) return;
+    g.querySelectorAll(".chip").forEach(c=>c.classList.remove("on")); b.classList.add("on");
+    const k=g.dataset.key; state[k]= isNaN(b.dataset.v)? b.dataset.v : +b.dataset.v;
+    renderSummary();
+  });
+});
+
+function calc(){
+  const plan = PLANS.find(p=>p.id===state.plan);
+  const perDay = (state.meals*PRICE.meal[state.meals] + state.snacks*PRICE.snack) * plan.mult;
+  const totalDays = state.days*state.weeks;
+  const gross = perDay*totalDays;
+  const disc = state.weeks===4 ? .10 : 0;
+  return {plan, perDay:perDay*(1-disc), gross, total:gross*(1-disc), disc, totalDays};
+}
+function renderSummary(){
+  const r=calc();
+  sumTitle.textContent = r.plan.name + " plan";
+  sumMeals.textContent = state.meals + " per day";
+  sumSnacks.textContent = state.snacks ? state.snacks + " per day" : "None";
+  sumDays.textContent = state.days + " days × " + state.weeks + (state.weeks>1?" weeks":" week");
+  sumSpice.textContent = state.spice;
+  sumPrice.innerHTML = fmt(r.total) + " <small>total</small>";
+  sumPer.textContent = fmt(r.perDay) + " per day · " + r.totalDays + " days of meals";
+  sumSave.innerHTML = r.disc ? `<span class="save">You save ${fmt(r.gross-r.total)}</span>` : "";
+}
+
+/* ---------- MENU ---------- */
+function renderDishes(){
+  const list = DISHES.filter(d=>d.m===state.menu && (state.filter==="all"||d.t.includes(state.filter)));
+  const tagLabel = {"high-protein":"High protein","low-carb":"Low carb","veg":"Veg","seafood":"Seafood"};
+  dishGrid.innerHTML = list.length ? list.map(d=>`
+    <div class="dish">
+      <div class="img" style="background:${d.bg}">
+        ${d.t[0]?`<span class="tag">${tagLabel[d.t[0]]}</span>`:""}
+        <span class="spice" title="Spice level">${d.s? "🌶️".repeat(d.s) : "No spice"}</span>
+        ${d.e}
+      </div>
+      <div class="body">
+        <h4>${d.n}</h4><div class="urdu">${d.u}</div>
+        <p class="d">${d.d}</p>
+        <div class="macros">
+          <div><b>${d.k}</b>kcal</div><div><b>${d.p}g</b>protein</div><div><b>${d.c}g</b>carbs</div><div><b>${d.f}g</b>fat</div>
+        </div>
+      </div>
+    </div>`).join("") : `<div class="empty">No dishes match this filter for ${state.menu}. Try another one!</div>`;
+}
+mealTabs.addEventListener("click",e=>{
+  const b=e.target.closest(".tab"); if(!b) return;
+  mealTabs.querySelectorAll(".tab").forEach(t=>t.classList.remove("on")); b.classList.add("on");
+  state.menu=b.dataset.v; renderDishes();
+});
+filters.addEventListener("click",e=>{
+  const b=e.target.closest(".filter"); if(!b) return;
+  filters.querySelectorAll(".filter").forEach(t=>t.classList.remove("on")); b.classList.add("on");
+  state.filter=b.dataset.v; renderDishes();
+});
+
+/* ---------- AREAS ---------- */
+areaList.innerHTML = AREAS.map(a=>`<span>${a}</span>`).join("") + SOON.map(a=>`<span class="soon">${a} · soon</span>`).join("");
+const opts = AREAS.map(a=>`<option>${a}</option>`).join("") + SOON.map(a=>`<option value="soon:${a}">${a} (coming soon)</option>`).join("");
+areaSel.innerHTML += opts; modalArea.innerHTML += AREAS.map(a=>`<option>${a}</option>`).join("");
+function checkArea(){
+  const v=areaSel.value;
+  areaRes.innerHTML = !v ? "" : v.startsWith("soon:")
+    ? `<span style="color:#9a6400">⏳ Coming soon to ${v.slice(5)}! Message us on WhatsApp to join the waitlist.</span>`
+    : `<span style="color:var(--green)">✅ Great news, we deliver to ${v}. Free delivery!</span>`;
+}
+
+/* ---------- MODAL ---------- */
+function openModal(){
+  const r=calc();
+  orderMini.innerHTML = `<b>${r.plan.name}</b> · ${state.meals} meals${state.snacks?` + ${state.snacks} snack${state.snacks>1?"s":""}`:""}/day · ${state.days} days × ${state.weeks} wk · ${state.spice}<br><b>${fmt(r.total)}</b>`;
+  const t=new Date(); t.setDate(t.getDate()+2); startDate.min = t.toISOString().slice(0,10); startDate.value = startDate.min;
+  formView.style.display=""; okView.style.display="none";
+  modal.classList.add("open");
+}
+function closeModal(){ modal.classList.remove("open"); }
+function submitOrder(e){ e.preventDefault(); formView.style.display="none"; okView.style.display=""; }
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeModal(); });
+document.querySelectorAll(".nav-links a").forEach(a=>a.addEventListener("click",()=>navLinks.classList.remove("show")));
+
+renderPlans(); renderSummary(); renderDishes();
+</script>
+</body>
+</html>
